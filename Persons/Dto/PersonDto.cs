@@ -1,4 +1,4 @@
-﻿namespace Persons.Abstractions
+﻿namespace Persons.Dto
 {
     public class PersonDto 
     {

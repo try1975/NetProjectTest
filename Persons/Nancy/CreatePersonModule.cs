@@ -6,7 +6,7 @@ using Persons.Abstractions;
 using Persons.Commands;
 using Persons.Logging;
 
-namespace Persons
+namespace Persons.Nancy
 {
     public class CreatePersonModule: NancyModule
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Persons.Abstractions;
 
-namespace Persons
+namespace Persons.Model
 {
     public class PersonFactory : IPersonFactory
     {

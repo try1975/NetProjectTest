@@ -2,8 +2,9 @@
 using System.Linq;
 using Dapper;
 using Persons.Abstractions;
+using Persons.Model;
 
-namespace Persons
+namespace Persons.Db
 {
     public class SqLiteAndDapperPersonRepository : IPersonRepository
     {
@@ -13,14 +14,13 @@ namespace Persons
             var result =  dbConnection.Query<dynamic>("SELECT [Id], [Name], [BirthDay], [Age] FROM [Persons] WHERE Id =@Id ", 
                 new { Id = id.ToString("D") }).SingleOrDefault();
             return MapOrderItems(result);
-
-
         }
 
         private IPerson MapOrderItems(dynamic result)
         {
             var person = new Person()
             {
+                Id = Guid.Parse(result[0].Id),
                 Name = result[0].Name,
                 BirthDay = result[0].BirthDay,
                 Age = result[0].Age

@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
     </Reference>
@@ -43,6 +46,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.109.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.109.2\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -56,13 +63,17 @@
     <Compile Include="Commands\CreatePerson.cs" />
     <Compile Include="Commands\CreatePersonHandler.cs" />
     <Compile Include="Commands\UnknownCommandException.cs" />
-    <Compile Include="GetPersonModule.cs" />
-    <Compile Include="CreatePersonModule.cs" />
-    <Compile Include="PersonBootstrapper.cs" />
-    <Compile Include="PersonFactory.cs" />
-    <Compile Include="SqLiteAndDapperPersonRepository.cs" />
+    <Compile Include="Dto\PersonDto.cs" />
+    <Compile Include="Nancy\GetPersonModule.cs" />
+    <Compile Include="Nancy\CreatePersonModule.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Nancy\PersonBootstrapper.cs" />
+    <Compile Include="Model\PersonFactory.cs" />
+    <Compile Include="Queries\FindById.cs" />
+    <Compile Include="Queries\GetPersonQuery.cs" />
+    <Compile Include="Db\SqLiteAndDapperPersonRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SQLiteDb.cs" />
+    <Compile Include="Db\SQLiteDb.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

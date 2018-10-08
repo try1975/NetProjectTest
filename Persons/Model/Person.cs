@@ -1,6 +1,7 @@
 ﻿using System;
+using Persons.Abstractions;
 
-namespace Persons.Abstractions
+namespace Persons.Model
 {
     public class Person : IPerson
     {

@@ -48,8 +48,6 @@
     <Compile Include="IPersonFactory.cs" />
     <Compile Include="IPersonRepository.cs" />
     <Compile Include="IQuery.cs" />
-    <Compile Include="Person.cs" />
-    <Compile Include="PersonDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

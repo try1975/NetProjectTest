@@ -1,13 +1,17 @@
-﻿using System.Runtime.InteropServices.ComTypes;
+﻿using AutoMapper;
 using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.TinyIoc;
 using Persons.Abstractions;
 using Persons.Commands;
+using Persons.Db;
+using Persons.Dto;
 using Persons.Logging;
+using Persons.Model;
+using Persons.Queries;
 using CreatePerson = Persons.Commands.CreatePerson;
 
-namespace Persons
+namespace Persons.Nancy
 {
     public class PersonBootstrapper : DefaultNancyBootstrapper
     {
@@ -19,6 +23,7 @@ namespace Persons
             container.Register<IPersonRepository, SqLiteAndDapperPersonRepository>().AsSingleton();
 
             container.Register<ICommandHandler<CreatePerson>, CreatePersonHandler>();
+            container.Register<IQuery<FindById, IPerson>, GetPersonQuery>();
 
             pipelines.BeforeRequest += ctx =>
             {
@@ -33,6 +38,8 @@ namespace Persons
                 Logger.Error($"{r.Method} {r.Path} {exception}");
                 return null;
             };
+
+           Mapper.Initialize(cfg=> cfg.CreateMap<IPerson, PersonDto>());
         }
     }
 

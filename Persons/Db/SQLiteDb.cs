@@ -3,7 +3,7 @@ using System.Data.SQLite;
 using System.IO;
 using Dapper;
 
-namespace Persons
+namespace Persons.Db
 {
     internal static class SqLiteDb
     {

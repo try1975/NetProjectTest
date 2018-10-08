@@ -1,7 +1,7 @@
 ﻿namespace Persons.Abstractions
 {
-    public interface IQuery<out TOutput>
+    public interface IQuery<in TInput, out TOutput>
     {
-        TOutput Ask();
+        TOutput Ask(TInput input);
     }
 }
