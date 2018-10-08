@@ -21,6 +21,7 @@ namespace Persons.Commands
             if (!DateTime.TryParseExact(command.BirthDay, "yyyy-MM-dd", CultureInfo.InvariantCulture,
                 DateTimeStyles.None, out var birthDay)) return;
             var person = _personFactory.CreatePerson(command.Name, birthDay);
+            command.Id = person.Id;
             _personRepository.Insert(person);
         }
     }

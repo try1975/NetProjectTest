@@ -17,7 +17,7 @@ namespace Persons.Service
                 .CreateLogger()
                 ;
 
-            Log.Logger.Information($"Start {nameof(PersonService)}");
+            Log.Logger.Information($"Start {nameof(PersonService)} at {url}");
             var paramStartAsService = ConfigurationManager.AppSettings["StartAsService"];
             var startAsService = (!string.IsNullOrWhiteSpace(paramStartAsService) && paramStartAsService.Trim().ToUpper().Equals("TRUE"));
             if (startAsService)

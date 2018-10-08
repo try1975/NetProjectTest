@@ -9,7 +9,7 @@ namespace Persons.Nancy
 {
     public class GetPersonModule : NancyModule
     {
-        static string GetPersonEndpoint = "/api/v1/persons";
+        private const string GetPersonEndpoint = "/api/v1/persons";
 
         public GetPersonModule(IQuery<FindById, IPerson> query) : base(GetPersonEndpoint)
         {

@@ -11,9 +11,11 @@ namespace Persons.Db
         public IPerson Find(Guid id)
         {
             var dbConnection = SqLiteDb.GetConnection();
-            var result =  dbConnection.Query<dynamic>("SELECT [Id], [Name], [BirthDay], [Age] FROM [Persons] WHERE Id =@Id ", 
+            var result =  dbConnection.Query<Person>("SELECT [Id], [Name], [BirthDay], [Age] FROM [Persons] WHERE Id =@Id ", 
                 new { Id = id.ToString("D") }).SingleOrDefault();
-            return MapOrderItems(result);
+
+            return result;
+            //return MapOrderItems(result);
         }
 
         private IPerson MapOrderItems(dynamic result)
