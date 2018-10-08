@@ -12,7 +12,7 @@ namespace Persons
 
         public GetPersonModule(IPersonRepository personRepository) : base(GetPersonEndpoint)
         {
-            Get["{id}"] = parameters =>
+            Get["{id:Guid}"] = parameters =>
             {
                 var id = Guid.Parse(parameters["id"]);
                 return personRepository.Find(id);

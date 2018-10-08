@@ -5,7 +5,7 @@ using Persons.Abstractions;
 
 namespace Persons
 {
-    public class PersonRepository : IPersonRepository
+    public class SqLiteAndDapperPersonRepository : IPersonRepository
     {
         public IPerson Find(Guid id)
         {

@@ -19,13 +19,13 @@ namespace Persons
             Post[""] = parameters =>
             {
                 var createPerson = this.Bind<CreatePerson>();
-                Logger.InfoFormat("Liblog: {@createPerson}", createPerson);
-                commandHandler.Execute(createPerson);
-
-                var personDto = this.Bind<PersonDto>();
-                if (!DateTime.TryParseExact(personDto.BirthDay, "yyyy-MM-dd", CultureInfo.InvariantCulture,
+                Logger.InfoFormat("{@createPerson}", createPerson);
+                if (!DateTime.TryParseExact(createPerson.BirthDay, "yyyy-MM-dd", CultureInfo.InvariantCulture,
                     DateTimeStyles.None, out var birthDay)) return HttpStatusCode.BadRequest;
-                var person = personFactory.CreatePerson(personDto.Name, birthDay);
+                commandHandler.Handle(createPerson);
+
+
+                var person = personFactory.CreatePerson(createPerson.Name, birthDay);
                 if (person == null) return HttpStatusCode.UnprocessableEntity;
                 personRepository.Insert(person);
                 var response = new Response

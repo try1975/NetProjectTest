@@ -15,14 +15,13 @@ namespace Persons.Commands
             _personRepository = personRepository;
         }
 
-        public bool Execute(CreatePerson command)
+        public void Handle(CreatePerson command)
         {
             
             if (!DateTime.TryParseExact(command.BirthDay, "yyyy-MM-dd", CultureInfo.InvariantCulture,
-                DateTimeStyles.None, out var birthDay)) return false;
+                DateTimeStyles.None, out var birthDay)) return;
             var person = _personFactory.CreatePerson(command.Name, birthDay);
             _personRepository.Insert(person);
-            return true;
         }
     }
 }
